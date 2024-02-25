@@ -3,7 +3,8 @@ import 'package:quiz_app/Components/header_text.dart';
 import 'package:quiz_app/Components/start_quiz.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+  final void Function() startQuiz;
+  const StartScreen(this.startQuiz, {super.key});
   @override
   Widget build(context) {
     return Column(
@@ -21,7 +22,7 @@ class StartScreen extends StatelessWidget {
         const SizedBox(
           height: 40,
         ),
-        const StartQuiz(),
+        StartQuiz(startQuiz),
       ],
     );
   }
