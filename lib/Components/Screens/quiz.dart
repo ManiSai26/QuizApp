@@ -14,16 +14,11 @@ class Quiz extends StatefulWidget {
 class _QuizState extends State<Quiz> {
   void changeScreen() {
     setState(() {
-      currentScreen = const QuestionsScreen();
+      currentScreen = 'questions-screen';
     });
   }
 
-  Widget? currentScreen;
-  @override
-  void initState() {
-    currentScreen = StartScreen(changeScreen);
-    super.initState();
-  }
+  String currentScreen = 'start-screen';
 
   @override
   Widget build(context) {
@@ -31,7 +26,9 @@ class _QuizState extends State<Quiz> {
       home: Scaffold(
         body: GradientContainer(
           widget: Center(
-            child: currentScreen,
+            child: currentScreen == 'start-screen'
+                ? StartScreen(changeScreen)
+                : const QuestionsScreen(),
           ),
         ),
       ),
